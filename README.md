@@ -1,5 +1,7 @@
 # buysharps
-###Task
+```
+Task
+```
 ## Edit Config file
 You need to add api public and secret key from shopify partner app.
 ```
