@@ -1,0 +1,26 @@
+﻿@model buysharps.Models.LoginModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@* --- Send a shop name for authorization --- *@
+@using (Html.BeginForm("Authorization", "Shopify", FormMethod.Post, new { @class = "myform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <label for="InputLogin">Log In Shopify</label>
+        <small id="LabHelp" class="form-text text-muted">Continue to your store.</small>
+        <div class="input-group mb-3">
+            @Html.EditorFor(model => model.ShopName,
+           new { htmlAttributes = new { @class = "form-control", name = "loginModel", placeholder = "My shop name", aria_label = "My shop name", aria_describedby = "basic-addon2" } })
+
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">.myshopify.com</span>
+            </div>
+            @Html.ValidationMessageFor(model => model.ShopName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <button type="submit" class="btn btn-dark">Next</button>
+}

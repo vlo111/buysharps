@@ -1,0 +1,152 @@
+﻿@model IPagedList<buysharps.Models.BuysharpsModel.Tables.Product>
+@{
+    ViewBag.Title = "Product";
+}
+@using MvcPaging
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn"> Redirect to ...</button>
+    <div id="myDropdown" class="dropdown-content">
+        @Html.ActionLink("Customer", "Customer")
+        @Html.ActionLink("Order", "Order")
+    </div>
+</div>
+
+<div class="orm-group">
+    <div class="row justify-content-center">
+        <div class="col-sm-5">
+            <h1>Products</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="row justify-content-end">
+        <div class="col-sm-2 create_sm">
+            <a class="btn btn-success btn-sm form-control" href="#">
+                <i class="fa fa-plus"></i>
+                Create
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr class="row">
+            <th class="col-sm">
+                @Html.DisplayName("Title")
+            </th>
+            <th class="col-sm">
+                @Html.DisplayName("Description")
+            </th>
+            <th class="col-sm">
+                @Html.DisplayName("Price")
+            </th>
+            <th class="col-sm">
+                @Html.DisplayName("Created at")
+            </th>
+            <th class="col-sm">
+                @Html.DisplayName("Image")
+            </th>
+            <th class="col-sm">
+                @Html.DisplayName("#")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr class="row">
+                <td class="col-sm">
+                    @Html.DisplayFor(model => product.Title, new { @class = "form-control" })
+                </td>
+                <td class=" col-sm">
+                    @* -- Convert Html to Paint Text & display if exist -- *@
+                    @{
+                        string description;
+                        if (!string.IsNullOrWhiteSpace(product.body_html))
+                        {
+                            description = System.Text.RegularExpressions.Regex.Replace(product.body_html, "<[^>]*>", "");
+                            <textarea disabled="disabled" class="form-control" aria-label="With textarea">@description'</textarea>
+                        }
+                    }
+
+                </td>
+
+                @* -- Price from variants -- *@
+                @foreach (var variant in product.Variants)
+                {
+                    <td class=" col-sm">
+                        @* -- Convert Html to Paint Text -- *@
+                        @{string price = (float.Parse(variant.Price)).ToString("C2");
+
+                            @Html.DisplayFor(model => price, new { @class = "form-control" })
+                            break;
+                        }
+                    </td>
+                }
+                <td class=" col-sm">
+                    @* -- Convert Html to Paint Text -- *@
+                    <img src="@product.Image.Src" class="img-fluid img-thumbnail" alt="...">
+                </td>
+
+                <td class=" col-sm">
+                    @{ var formatDate = product.created_at.ToString("MMMM/dd/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));}
+                    @Html.DisplayFor(model => formatDate, new { @class = "form-control desc_text_size" })
+                </td>
+                <td class=" col-sm">
+                    <a class="btn btn-primary btn-sm" href="#">
+                        <i class="fa fa-pencil"></i>
+                        Edit
+                    </a>
+
+                    <a class="btn btn-danger btn-sm" data-modal="" href="@Url.Action("ProductDelete", "Shopify", new { id = product.Id })">
+                        <i class="fa fa-trash"></i>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav id="nav_pager" aria-label="Page navigation example">
+    @Html.Raw(Html.Pager(
+         new Options
+         {
+             PageSize = Model.PageSize,
+             TotalItemCount = Model.TotalItemCount,
+             CurrentPage = Model.PageNumber,
+             ItemTexts = new ItemTexts() { Next = "", Previous = "" },
+             ItemIcon = new ItemIcon() { First = "fa fa-backward", Previous = "fa fa-chevron-left", Next = "fa fa-chevron-right", Last = "fa fa-forward" },
+             TooltipTitles = new TooltipTitles() { Next = "Next page {0}", Previous = "Previous page {0}", Page = "Go to page {0}" },
+             Size = Size.large,
+             Alignment = Alignment.centered,
+             IsShowControls = true,
+             IsShowFirstLast = true,
+             IsShowPages = true
+         }, new { employee_name = ViewData["product_name"] }))
+</nav>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+
+        jQuery("a[data-modal]").on('click', function () {
+
+            jQuery("#myModalContent").load(this.href, function () {
+
+                jQuery('#myModal').modal("show");
+            });
+
+            return false;
+        });
+
+    </script>
+}

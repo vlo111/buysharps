@@ -1,0 +1,262 @@
+﻿body {
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+button {
+    min-width: 100px;
+}
+
+.myform {
+    font-size: xx-large;
+    margin: 0 auto;
+    width: 300px;
+}
+
+    .myform span {
+        font-size: medium;
+    }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.create_sm {
+    margin-right: -12px;
+}
+
+.desc_text_size {
+    max-height: 250px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #2B3E2A;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    min-width: 160px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+    /* Dropdown button on hover & focus */
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #6D7377;
+    }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+
+.show {
+    display: block;
+}
+
+/* Pgination */
+.pagination {
+    height: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+    .pager, .pagination ul {
+        margin-left: 0;
+        *zoom: 1
+    }
+
+    .pagination ul {
+        padding: 0;
+        display: inline-block;
+        *display: inline;
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: 0 1px 2px rgba(0,0,0,.05)
+    }
+
+    .pagination li {
+        display: inline
+    }
+
+    .pagination a {
+        float: left;
+        padding: 0 12px;
+        line-height: 30px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        border-left-width: 0
+    }
+
+        .pagination .active a, .pagination a:hover {
+            background-color: #f5f5f5;
+            color: #94999E
+        }
+
+    .pagination .active a {
+        color: #94999E;
+        cursor: default
+    }
+
+    .pagination .disabled a, .pagination .disabled a:hover, .pagination .disabled span {
+        color: #94999E;
+        background-color: transparent;
+        cursor: default
+    }
+
+    .pagination li:first-child a, .pagination li:first-child span {
+        border-left-width: 1px;
+        -webkit-border-radius: 3px 0 0 3px;
+        -moz-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px
+    }
+
+    .pagination li:last-child a {
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0
+    }
+
+.pagination-centered {
+    text-align: center
+}
+
+.pagination-right {
+    text-align: right
+}
+
+.pager {
+    margin-bottom: 18px;
+    text-align: center
+}
+
+    .pager:after, .pager:before {
+        display: table;
+        content: ""
+    }
+
+    .pager li {
+        display: inline
+    }
+
+    .pager a {
+        display: inline-block;
+        padding: 5px 12px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px
+    }
+
+        .pager a:hover {
+            text-decoration: none;
+            background-color: #f5f5f5
+        }
+
+    .pager .next a {
+        float: right
+    }
+
+    .pager .previous a {
+        float: left
+    }
+
+    .pager .disabled a, .pager .disabled a:hover {
+        color: #999;
+        background-color: #fff;
+        cursor: default
+    }
+
+.pagination .prev.disabled span {
+    float: left;
+    padding: 0 12px;
+    line-height: 30px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-left-width: 1
+}
+
+.pagination .next.disabled span {
+    float: left;
+    padding: 0 12px;
+    line-height: 30px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-left-width: 0
+}
+
+.pagination li.active, .pagination li.disabled {
+    float: left;
+    padding: 0 12px;
+    line-height: 30px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-left-width: 0
+}
+
+.pagination li.active {
+    background: #CCD6E1;
+    color: #fff;
+}
+
+.pagination li:first-child {
+    border-left-width: 1px;
+}
