@@ -1,5 +1,5 @@
 # buysharps
-Task
+###Task
 ## Edit Config file
 You need to add api public and secret key from shopify partner app.
 ```
@@ -14,6 +14,7 @@ For example: C:\myapp\app.config (make sure this file name and path is the same 
    <add key="AppScope" value="read_orders,write_orders" />
 </appSettings>
 ```
+## Images the app
 ![alt text](https://image.prntscr.com/image/nAZs4lTkRJKBzanHbBpydQ.png)
 ![alt text](https://image.prntscr.com/image/yoLa5joDT6Cm9LjTOJFP6g.png)
 ![alt text](https://image.prntscr.com/image/9nAcml2FRZayMbbzTW0MWA.png)
